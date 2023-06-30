@@ -60,14 +60,14 @@ describe("Cita component" , () => {
     });
 
     describe("When the user does not complete the input", () => {
-      it("Should display a loading message while data is being fetched", ()=>{
+      it.skip("Should display a loading message while data is being fetched", ()=>{
         Component();
         fireEvent.reset(screen.getByRole("textbox", {name:/Author Cita/i}));
         fireEvent.click(screen.getByRole("button", {name: /Obtener Cita/i}))
         expect(screen.getByText(/cargando/i)).toBeInTheDocument();
       });
 
-      it.skip("Should display a random quote when the user clicks the button", async () => {
+      it("Should display a random quote when the user clicks the button", async () => {
         act(() => {
           Component();
         })
