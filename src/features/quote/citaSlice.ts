@@ -19,7 +19,6 @@ export const obtenerCitaAsync = createAsyncThunk(
   async (personaje: string) => {
     try {
       const cita = await obtenerCita(personaje);
-
       return cita;
     } catch (err) {
       throw err;
@@ -57,7 +56,7 @@ export const obtenerCitaDeLaAPI =
     dispatch(obtenerCitaAsync(personaje));
   };
 
-export const obtenerCitaDelEstado = (state: RootState) => state.cita.data;
-export const obtenerEstadoDelPedido = (state: RootState) => state.cita.estado;
+export const obtenerCitaDelEstado = (state: RootState) => state?.cita?.data;
+export const obtenerEstadoDelPedido = (state: RootState) => state?.cita?.estado;
 
 export default citaSlice.reducer;

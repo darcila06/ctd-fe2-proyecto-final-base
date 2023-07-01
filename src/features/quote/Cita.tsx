@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { shallowEqual } from "react-redux";
 import { Boton, Input, AutorCita, ContenedorCita, TextoCita } from "./styled";
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
@@ -7,6 +7,7 @@ import {
   limpiar,
   obtenerEstadoDelPedido,
   obtenerCitaDeLaAPI,
+  obtenerCitaAsync,
 } from "./citaSlice";
 import { obtenerMensaje } from "./utils";
 
@@ -18,7 +19,7 @@ function Cita() {
 
   const dispatch = useAppDispatch();
 
-  const onClickObtenerCita = () => dispatch(obtenerCitaDeLaAPI(valorInput));
+  const onClickObtenerCita = () => dispatch(obtenerCitaAsync(valorInput));
 
   const onClickBorrar = () => {
     dispatch(limpiar());
@@ -32,7 +33,7 @@ function Cita() {
       <Input
         aria-label="Author Cita"
         value={valorInput}
-        onChange={(e) => setValorInput(e.target.value)}
+        onChange={(e: ChangeEvent<HTMLInputElement>) => setValorInput(e.target.value)}
         placeholder="Ingresa el nombre del autor"
       />
       <Boton
